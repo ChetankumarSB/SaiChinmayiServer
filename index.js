@@ -9,6 +9,8 @@ require("dotenv").config();
 
 var bodyParser = require('body-parser')
 
+var port = process.env.PORT || 8000;
+
 app.use(cors());
 var bodyParser = require('body-parser');
 const { count } = require('./models/Users');
@@ -174,4 +176,6 @@ app.get("/api/v1/user/read", async (req,res) => {
    })
 })
   
-app.listen(process.env.PORT || 8001,() => {console.log("Iam connected")});
+app.listen(port, () => {
+    console.log("App is running on port " + port);
+});
