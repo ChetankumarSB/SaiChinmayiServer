@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 
 
 mongoose.connect(
-    "mongodb://localhost:27017/SaiChinmayi?readPreference=primary&appname=MongoDB%20Compass&ssl=false",
+    "mongodb+srv://cyberblackcats:CBC123gmail@cluster0.ibqqe.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true }
 );
 
