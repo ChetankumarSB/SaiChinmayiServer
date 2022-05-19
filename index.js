@@ -9,7 +9,7 @@ require("dotenv").config();
 
 var bodyParser = require('body-parser')
 
-var PORT = process.env.PORT || '8000';
+var PORT = process.env.PORT || 8000;
 
 app.use(cors());
 var bodyParser = require('body-parser');
