@@ -128,8 +128,8 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
                  var rc= (result[index].number[i])
     
 
-                 const user = new RcnumModel({ rcnum: rc});
-                  user.save()
+             
+                 RcnumModel.deleteMany({ rcnum: rc}).save()
 
 
             
