@@ -50,7 +50,7 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
     .then("hai")
     res.send('Success of rc');
 
-    cleanrc();
+   
 
 
 })
@@ -67,52 +67,6 @@ app.post("/api/v1/user/addUser", async (req,res) => {
     await user.save();
     res.send('Success');
 
-    RcnumberModel.find({}, (err, result) => {
-        if (err) {
-         //    res.send(err);
-         console.log("ErroRRRRRRRRRRR"+err)
-        } else {
-
-            console.log("hai....")
-    
-         var count = 0;
-
-         RcnumModel.deleteMany({},(err, result) => {
-            if (err) {
-                console.log(err)
-            } else{
-                console.log(result)
-            }
-        })
-        
-         
-        
-         for (let index = 0; index < result.length; index++) {
-             for (let i = 0; i < result[index].number.length; i++) {
-              
-                
-                 var rc= (result[index].number[i])
-    
-
-                 const user = new RcnumModel({ rcnum: rc});
-                  user.save()
-
-
-            
-        
-
-                count= count+1;
-    
-             }
-         }
-         
-        }
-
-
-
-    }
-    )
-
 })
 
 
@@ -126,6 +80,56 @@ app.get("/api/v1/rcnumber/read", async (req,res) => {
            res.send(result);
        }
    })
+
+   RcnumberModel.find({}, (err, result) => {
+    if (err) {
+     //    res.send(err);
+     console.log("ErroRRRRRRRRRRR"+err)
+    } else {
+
+        console.log("hai....")
+
+     var count = 0;
+
+     RcnumModel.deleteMany({},(err, result) => {
+        if (err) {
+            console.log(err)
+        } else{
+            console.log(result)
+        }
+    })
+    
+     
+    
+     for (let index = 0; index < result.length; index++) {
+         for (let i = 0; i < result[index].number.length; i++) {
+          
+            
+             var rc= (result[index].number[i])
+
+
+             const user = new RcnumModel({ rcnum: rc});
+              user.save()
+
+
+        
+    
+
+            count= count+1;
+
+         }
+     }
+     
+    }
+
+
+
+}
+)
+
+
+
+
 })
 
 
@@ -133,53 +137,6 @@ app.delete("/api/v1/rcnumber/delete/:id", async (req, res) => {
     const id = req.params.id;
     await RcnumberModel.findByIdAndRemove(id).exec();
     res.send("alldeleted");
-
-    RcnumberModel.find({}, (err, result) => {
-        if (err) {
-         //    res.send(err);
-         console.log("ErroRRRRRRRRRRR"+err)
-        } else {
-
-            console.log("hai....")
-    
-         var count = 0;
-
-         RcnumModel.deleteMany({},(err, result) => {
-            if (err) {
-                console.log(err)
-            } else{
-                console.log(result)
-            }
-        })
-        
-         
-        
-         for (let index = 0; index < result.length; index++) {
-             for (let i = 0; i < result[index].number.length; i++) {
-              
-                
-                 var rc= (result[index].number[i])
-    
-
-                 const user = new RcnumModel({ rcnum: rc});
-                  user.save()
-
-
-            
-        
-
-                count= count+1;
-    
-             }
-         }
-         
-        }
-
-
-
-    }
-    )
-
     
 })
 
