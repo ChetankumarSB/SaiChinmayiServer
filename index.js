@@ -120,7 +120,10 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
          for (let index = 0; index < result.length; index++) {
              for (let i = 0; i < result[index].number.length; i++) {  
                  var rc= (result[index].number[i])
-                 RcnumModel.deleteMany({ rcnum: rc}).save()
+                
+                 const user = new RcnumModel({ rcnum: rc});
+                  user.save()
+
              }
          }
          res.status(200)
@@ -178,7 +181,8 @@ app.delete("/api/v1/rcnumber/delete/:id", async (req, res) => {
      for (let index = 0; index < result.length; index++) {
          for (let i = 0; i < result[index].number.length; i++) {  
              var rc= (result[index].number[i])
-             RcnumModel.deleteMany({ rcnum: rc}).save()
+             const user = new RcnumModel({ rcnum: rc});
+             user.save()
          }
      }
 
