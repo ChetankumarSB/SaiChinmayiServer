@@ -136,6 +136,9 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
     
              }
          }
+
+         res.status(200)
+             res.send(result);
          
         }
 
