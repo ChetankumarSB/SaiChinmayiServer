@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const RcnumberModel = require('./models/Rcnumbers');
 const RcnumModel = require('./models/Rcnum');
-require("dotenv").config();
 
 var bodyParser = require('body-parser')
 
@@ -25,16 +24,17 @@ mongoose.connect(
 
 
 const cleanrc = () => {
+
     RcnumberModel.find({}, (err, result) => {
         if (err) {
          //    res.send(err);
          console.log("ErroRRRRRRRRRRR"+err)
         } else {
-    
+
             console.log("hai....")
     
          var count = 0;
-    
+
          RcnumModel.deleteMany({},(err, result) => {
             if (err) {
                 console.log(err)
@@ -51,28 +51,29 @@ const cleanrc = () => {
                 
                  var rc= (result[index].number[i])
     
-    
+
                  const user = new RcnumModel({ rcnum: rc});
                   user.save()
-    
-    
+
+
             
         
-    
+
                 count= count+1;
     
              }
          }
          
         }
-    
-       res.send(result);
-       res.sendStatus(200);
-       console.log(result)
-    
+
+
+
     }
     )
+    
+
 }
+
 
 app.get("/api/v1/app/rcnumber/read", async (req,res) => {
 
@@ -100,7 +101,7 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
     .then("hai")
     res.send('Success of rc');
 
-   
+    cleanrc();
 
 
 })
@@ -128,20 +129,20 @@ app.get("/api/v1/rcnumber/read", async (req,res) => {
            res.send(err);
        } else {
            res.send(result);
-            cleanrc();
        }
    })
-
-
-
-   
 })
+
 
 
 app.delete("/api/v1/rcnumber/delete/:id", async (req, res) => {
     const id = req.params.id;
     await RcnumberModel.findByIdAndRemove(id).exec();
     res.send("alldeleted");
+
+cleanrc();
+
+
     
 })
 
