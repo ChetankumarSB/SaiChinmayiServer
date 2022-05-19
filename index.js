@@ -19,9 +19,8 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 
 mongoose.connect(
     "mongodb+srv://cyberblackcats:CBC123gmail@cluster0.ibqqe.mongodb.net/?retryWrites=true&w=majority",
-  { useNewUrlParser: true }
+  { useNewUrlParser: true,useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true }
 );
-
 
 // const cleanrc = () => {
 
@@ -109,6 +108,24 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
 
             console.log("hai....")
 
+
+            RcnumModel.deleteMany({},(err, result) => {
+                if (err) {
+                    console.log(err)
+                } else{
+                    console.log(result)
+                }
+            })
+            
+             for (let index = 0; index < result.length; index++) {
+                 for (let i = 0; i < result[index].number.length; i++) {
+            
+                     var rc= (result[index].number[i])
+                     const user = new RcnumModel({ rcnum: rc});
+                      user.save()
+                 }
+             }
+
          res.status(200)
              res.send(result);
          
@@ -148,23 +165,6 @@ app.get("/api/v1/rcnumber/read", async (req,res) => {
        }
    })
 
-
-   RcnumModel.deleteMany({},(err, result) => {
-    if (err) {
-        console.log(err)
-    } else{
-        console.log(result)
-    }
-})
-
- for (let index = 0; index < result.length; index++) {
-     for (let i = 0; i < result[index].number.length; i++) {
-
-         var rc= (result[index].number[i])
-         const user = new RcnumModel({ rcnum: rc});
-          user.save()
-     }
- }
 })
 
 
@@ -173,6 +173,23 @@ app.delete("/api/v1/rcnumber/delete/:id", async (req, res) => {
     const id = req.params.id;
     await RcnumberModel.findByIdAndRemove(id).exec();
     res.send("alldeleted");
+
+    RcnumModel.deleteMany({},(err, result) => {
+        if (err) {
+            console.log(err)
+        } else{
+            console.log(result)
+        }
+    })
+    
+     for (let index = 0; index < result.length; index++) {
+         for (let i = 0; i < result[index].number.length; i++) {
+    
+             var rc= (result[index].number[i])
+             const user = new RcnumModel({ rcnum: rc});
+              user.save()
+         }
+     }
 
 
 
