@@ -9,7 +9,7 @@ require("dotenv").config();
 
 var bodyParser = require('body-parser')
 
-var port = process.env.PORT || 8000;
+var PORT = process.env.PORT || '8000';
 
 app.use(cors());
 var bodyParser = require('body-parser');
@@ -176,6 +176,6 @@ app.get("/api/v1/user/read", async (req,res) => {
    })
 })
   
-app.listen(port, () => {
-    console.log("App is running on port " + port);
+app.listen(PORT, () => {
+    console.log("App is running on port " + PORT);
 });
