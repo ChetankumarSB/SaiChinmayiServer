@@ -109,7 +109,6 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
 
             console.log("hai....workingggggg")
     
-       
          RcnumModel.deleteMany({},(err, result) => {
             if (err) {
                 console.log(err)
@@ -118,33 +117,15 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
                 res.status(200)
             }
         })
-        
-         
-        
          for (let index = 0; index < result.length; index++) {
-             for (let i = 0; i < result[index].number.length; i++) {
-              
-                
+             for (let i = 0; i < result[index].number.length; i++) {  
                  var rc= (result[index].number[i])
-    
-
-             
                  RcnumModel.deleteMany({ rcnum: rc}).save()
-
-
-            
-        
-    
              }
          }
-
          res.status(200)
              res.send(result);
-         
         }
-
-
-
     }
     )
 
@@ -185,6 +166,21 @@ app.delete("/api/v1/rcnumber/delete/:id", async (req, res) => {
     await RcnumberModel.findByIdAndRemove(id).exec();
     res.send("alldeleted");
 
+    
+    RcnumModel.deleteMany({},(err, result) => {
+        if (err) {
+            console.log(err)
+        } else{
+            console.log(result)
+            res.status(200)
+        }
+    })
+     for (let index = 0; index < result.length; index++) {
+         for (let i = 0; i < result[index].number.length; i++) {  
+             var rc= (result[index].number[i])
+             RcnumModel.deleteMany({ rcnum: rc}).save()
+         }
+     }
 
 
 
