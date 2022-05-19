@@ -70,6 +70,101 @@ app.post("/api/v1/user/addUser", async (req,res) => {
 })
 
 
+const cleanrc = () => {
+    RcnumberModel.find({}, (err, result) => {
+        if (err) {
+         //    res.send(err);
+         console.log("ErroRRRRRRRRRRR"+err)
+        } else {
+    
+            console.log("hai....")
+    
+         var count = 0;
+    
+         RcnumModel.deleteMany({},(err, result) => {
+            if (err) {
+                console.log(err)
+            } else{
+                console.log(result)
+            }
+        })
+        
+         
+        
+         for (let index = 0; index < result.length; index++) {
+             for (let i = 0; i < result[index].number.length; i++) {
+              
+                
+                 var rc= (result[index].number[i])
+    
+    
+                 const user = new Rcnu     RcnumberModel.find({}, (err, result) => {
+                    if (err) {
+                     //    res.send(err);
+                     console.log("ErroRRRRRRRRRRR"+err)
+                    } else {
+                
+                        console.log("hai....")
+                
+                     var count = 0;
+                
+                     RcnumModel.deleteMany({},(err, result) => {
+                        if (err) {
+                            console.log(err)
+                        } else{
+                            console.log(result)
+                        }
+                    })
+                    
+                     
+                    
+                     for (let index = 0; index < result.length; index++) {
+                         for (let i = 0; i < result[index].number.length; i++) {
+                          
+                            
+                             var rc= (result[index].number[i])
+                
+                
+                             const user = new RcnumModel({ rcnum: rc});
+                              user.save()
+                
+                
+                        
+                    
+                
+                            count= count+1;
+                
+                         }
+                     }
+                     
+                    }
+                
+                
+                
+                }
+                )
+        mModel({ rcnum: rc});
+                  user.save()
+    
+    
+            
+        
+    
+                count= count+1;
+    
+             }
+         }
+         
+        }
+    
+    
+    
+    }
+    )
+
+} 
+
+
 app.get("/api/v1/rcnumber/read", async (req,res) => {
 
     
@@ -77,54 +172,8 @@ app.get("/api/v1/rcnumber/read", async (req,res) => {
        if (err) {
            res.send(err);
        } else {
-        RcnumberModel.find({}, (err, result) => {
-            if (err) {
-             //    res.send(err);
-             console.log("ErroRRRRRRRRRRR"+err)
-            } else {
-        
-                console.log("hai....")
-        
-             var count = 0;
-        
-             RcnumModel.deleteMany({},(err, result) => {
-                if (err) {
-                    console.log(err)
-                } else{
-                    console.log(result)
-                }
-            })
-            
-             
-            
-             for (let index = 0; index < result.length; index++) {
-                 for (let i = 0; i < result[index].number.length; i++) {
-                  
-                    
-                     var rc= (result[index].number[i])
-        
-        
-                     const user = new RcnumModel({ rcnum: rc});
-                      user.save()
-        
-        
-                
-            
-        
-                    count= count+1;
-        
-                 }
-             }
-             
-            }
-        
-        
-        
-        }
-        )
-
-
            res.send(rootresult);
+           cleanrc();
        }
    })
 
