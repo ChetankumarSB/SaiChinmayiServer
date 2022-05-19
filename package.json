@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Sai Chinmayi Project by Cyberblackcats",
   "main": "index.js",
+  "engines": {
+    "node": "14.17.3",
+    "npm": "8.54"
+    },
   "scripts": {
     "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
