@@ -66,7 +66,9 @@ const cleanrc = () => {
          
         }
     
-    
+       res.send(result);
+       res.sendStatus(200);
+       console.log(result)
     
     }
     )
