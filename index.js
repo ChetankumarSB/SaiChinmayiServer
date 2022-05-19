@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 
 mongoose.connect(
     "mongodb+srv://cyberblackcats:CBC123gmail@cluster0.ibqqe.mongodb.net/?retryWrites=true&w=majority",
-  { useNewUrlParser: true,useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true }
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 // const cleanrc = () => {
