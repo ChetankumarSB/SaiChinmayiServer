@@ -107,7 +107,7 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
          console.log("ErroRRRRRRRRRRR"+err)
         } else {
 
-            console.log("hai....")
+            console.log("hai....workingggggg")
     
        
          RcnumModel.deleteMany({},(err, result) => {
@@ -115,6 +115,7 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
                 console.log(err)
             } else{
                 console.log(result)
+                res.status(200)
             }
         })
         
