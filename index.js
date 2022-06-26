@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const RcnumberModel = require('./models/Rcnumbers');
 const RcnumModel = require('./models/Rcnum');
+require("dotenv").config();
 
 var bodyParser = require('body-parser')
 
@@ -18,9 +19,16 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 
 
 mongoose.connect(
-    "mongodb+srv://cyberblackcats:CBC123gmail@cluster0.ibqqe.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://cyberblackcats:CBCsaichinmayihub@saichinmayicluster.arvtx.mongodb.net/?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
+
+// mongoose.connect(
+//     "mongodb+srv://cyberblackcats:CBC123gmail@cluster0.ibqqe.mongodb.net/?retryWrites=true&w=majority",
+//     mongodb+srv://cyberblackcats:<password>@saichinmayicluster.arvtx.mongodb.net/test
+//   { useNewUrlParser: true, useUnifiedTopology: true }
+// );
+
 
 const cleanrc = () => {
 
