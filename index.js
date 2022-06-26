@@ -52,7 +52,7 @@ const cleanrc = () => {
               
                 
                  var rc= (result[index].number[i])
-
+                    rc= rc.sort();
                 console.log(rc);
     
 
