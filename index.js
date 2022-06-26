@@ -9,8 +9,6 @@ require("dotenv").config();
 
 var bodyParser = require('body-parser')
 
-
-
 app.use(cors());
 var bodyParser = require('body-parser');
 const { count } = require('./models/Users');
@@ -54,16 +52,24 @@ const cleanrc = () => {
               
                 
                  var rc= (result[index].number[i])
+
+                console.log(rc);
     
 
-                 const user = new RcnumModel({ rcnum: rc});
-                  user.save()
+                //  const user = new RcnumModel({ rcnum: rc});
+                //   user.save()
 
 
             
     
              }
          }
+
+
+
+
+
+
          
         }
 
@@ -143,12 +149,6 @@ app.delete("/api/v1/rcnumber/delete/:id", async (req, res) => {
     cleanrc();
     res.send("alldeleted");
 
- 
-
-
-
-
-    
 })
 
 app.delete("/api/v1/user/delete/:id", async (req, res) => {
