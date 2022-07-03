@@ -131,7 +131,7 @@ app.delete("/api/v1/rcnumber/delete/:id", async (req, res) => {
     const id = req.params.id;
     await RcnumberModel.findByIdAndRemove(id).exec();
 
-    cleanrc();
+    //cleanrc();
     res.send("alldeleted");
 
 })
