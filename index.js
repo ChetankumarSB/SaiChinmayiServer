@@ -28,58 +28,43 @@ mongoose.connect(
 // );
 
 
-const cleanrc = () => {
+// const cleanrc = () => {
 
-    RcnumModel.deleteMany({},(err, result) => {
-        if (err) {
-            console.log(err)
-        } else{
-            console.log(result)
-        }
-    })
+//     RcnumModel.deleteMany({},(err, result) => {
+//         if (err) {
+//             console.log(err)
+//         } else{
+//             console.log(result)
+//         }
+//     })
 
-    RcnumberModel.find({}, (err, result) => {
-        if (err) {
-         //    res.send(err);
-         console.log("ErroRRRRRRRRRRR"+err)
-        } else {
+//     RcnumberModel.find({}, (err, result) => {
+//         if (err) {
+//          //    res.send(err);
+//          console.log("ErroRRRRRRRRRRR"+err)
+//         } else {
 
-            console.log("hai....")
+//             console.log("hai....")
          
         
-         for (let index = 0; index < result.length; index++) {
-             for (let i = 0; i < result[index].number.length; i++) {
+//          for (let index = 0; index < result.length; index++) {
+//              for (let i = 0; i < result[index].number.length; i++) {
               
                 
-                 var rc= (result[index].number[i])
-                //     // rc= rc.sort();
-                // console.log(rc);
+//                  var rc= (result[index].number[i])
+//                 //     // rc= rc.sort();
+//                 // console.log(rc);
     
 
-                 const user = new RcnumModel({ rcnum: rc});
-                  user.save()
+//                  const user = new RcnumModel({ rcnum: rc});
+//                   user.save()
 
-
-            
-    
-             }
-         }
-
-
-
-
-
-
-         
-        }
-
-
-
-    }
-    )
-    
-
-}
+//              }
+//          }
+//         }
+//     }
+//     )
+// }
 
 
 app.get("/api/v1/app/rcnumber/read", async (req,res) => {
@@ -107,7 +92,7 @@ app.post("/api/v1/rcnumber/post", async (req,res) => {
     await user.save()
     .then("hai")
 
-    cleanrc();
+    //cleanrc();
     res.send('Success of rc');
 
 })
