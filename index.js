@@ -51,13 +51,13 @@ const cleanrc = () => {
              for (let i = 0; i < result[index].number.length; i++) {
               
                 
-                 var rc= (result[index].number[i])
-                    rc= rc.sort();
-                console.log(rc);
+                //  var rc= (result[index].number[i])
+                //     // rc= rc.sort();
+                // console.log(rc);
     
 
-                //  const user = new RcnumModel({ rcnum: rc});
-                //   user.save()
+                 const user = new RcnumModel({ rcnum: rc});
+                  user.save()
 
 
             
